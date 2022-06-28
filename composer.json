@@ -1,0 +1,34 @@
+{
+    "name": "asifkhankadiwala/php7elephant.io",
+    "type": "library",
+    "description": "Send events to a websocket real time engine though PHP",
+    "keywords": ["Nodejs", "WebSocket", "Dialog", "Real Time"],
+    "license": "MIT",
+    "homepage": "https://elephantio.github.io/elephant.io/",
+    "authors": [
+        {
+            "name": "Asifkhan Kadiwala",
+            "email": "asifkhankadiwala@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "psr/log": "1.1.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "monolog/monolog": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ElephantIO\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ElephantIO\\": "test/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
