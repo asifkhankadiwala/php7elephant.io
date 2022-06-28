@@ -359,9 +359,16 @@ class Version1X extends AbstractSocketIO
 
         $sid = null;
         $this->stream->request($uri, ['Connection: close']);
-        if (($packet = $this->decodePacket($this->stream->getBody())) && $packet->data && isset($packet->data['sid'])) {
+        $packet = $this->decodePacket($this->stream->getBody());
+
+        if(!isset($packet->data)) {
+            $packet->data['sid'] = json_decode(str_replace('42','',$packet->nsp))->sid;
+        }
+        
+        if ($packet && $packet->data && isset($packet->data['sid'])) {
             $sid = $packet->data['sid'];
         }
+        
         if (!$sid) {
             throw new ServerConnectionFailureException('unable to perform namespace confirmation');
         }
