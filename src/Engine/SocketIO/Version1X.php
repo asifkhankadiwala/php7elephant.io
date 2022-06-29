@@ -360,9 +360,8 @@ class Version1X extends AbstractSocketIO
         $sid = null;
         $this->stream->request($uri, ['Connection: close']);
         $packet = $this->decodePacket($this->stream->getBody());
-
         if(!isset($packet->data)) {
-            $packet->data['sid'] = json_decode(str_replace('42','',$packet->nsp))->sid;
+            $packet->data['sid'] = json_decode(str_replace('42','',$packet->nsp))->sid;
         }
         
         if ($packet && $packet->data && isset($packet->data['sid'])) {
